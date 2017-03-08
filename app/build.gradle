@@ -17,7 +17,7 @@ def readApiKey = {
             println("Please create a keys.properties file in the root directory of the project")
         }
     }
-    return "$apiKey";
+    return "\"$apiKey\"";
 }
 
 android {
@@ -48,9 +48,19 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    // support dependencies
     compile "com.android.support:appcompat-v7:$supportLibraryVersion"
     compile "com.android.support:support-v4:$supportLibraryVersion"
     compile "com.android.support:recyclerview-v7:$supportLibraryVersion"
+
+    // other dependencies
+    compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    compile "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    compile "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+    compile "io.reactivex.rxjava2:rxandroid:$rxJavaVersion"
+
+    compile "com.google.code.gson:gson:$gsonVersion"
 
     // test dependencies
     testCompile "junit:junit:$jUnitVersion"
