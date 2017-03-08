@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply from: '../codequality/quality.gradle'
 
 android {
     compileSdkVersion 25
