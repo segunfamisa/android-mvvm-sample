@@ -10,6 +10,7 @@ ext {
     retrofitVersion = "2.2.0"
     gsonVersion = "2.4"
     rxJavaVersion = "2.0.1"
+    glideVersion = "3.7.0"
 
     // test libraries versions
     jUnitVersion = "4.12"
