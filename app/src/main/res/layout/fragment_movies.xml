@@ -1,0 +1,24 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.segunfamisa.sample.mvvm.ui.movies.MoviesFragment">
+
+        <!-- movies list -->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/movies"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+        <!-- empty view -->
+        <View
+            android:id="@+id/empty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </FrameLayout>
+
+</layout>

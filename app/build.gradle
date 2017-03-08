@@ -28,6 +28,8 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile "com.android.support:appcompat-v7:$supportLibraryVersion"
+    compile "com.android.support:support-v4:$supportLibraryVersion"
+    compile "com.android.support:recyclerview-v7:$supportLibraryVersion"
 
     // test dependencies
     testCompile "junit:junit:$jUnitVersion"

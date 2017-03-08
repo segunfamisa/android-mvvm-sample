@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- poster -->
+    <com.segunfamisa.sample.mvvm.ui.widget.PosterImageView
+        android:id="@+id/poster"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        tools:src="@drawable/movie_placeholder"/>
+
+</layout>
