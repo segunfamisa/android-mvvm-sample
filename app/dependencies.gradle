@@ -1,0 +1,13 @@
+ext {
+    compileSdkVersion = 25
+    minSdkVersion = 15
+    targetSdkVersion = 25
+    buildToolsVersion = "25.0.2"
+
+    // support library versions
+    supportLibraryVersion = "25.1.1"
+
+    // test libraries versions
+    jUnitVersion = "4.12"
+    espressoCoreVersion = "2.2.2"
+}
