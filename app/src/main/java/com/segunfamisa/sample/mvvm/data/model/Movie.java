@@ -61,7 +61,7 @@ public class Movie {
     private String status;
 
     public String getPosterPath() {
-        return posterPath;
+        return "https://image.tmdb.org/t/p/w342" + posterPath;
     }
 
     public boolean isAdult() {
