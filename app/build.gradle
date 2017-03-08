@@ -4,6 +4,11 @@ apply from: '../codequality/quality.gradle'
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
+
+    dataBinding {
+        enabled true
+    }
+
     defaultConfig {
         applicationId "com.segunfamisa.sample.mvvm"
         minSdkVersion 15
