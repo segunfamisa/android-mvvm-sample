@@ -1,6 +1,25 @@
 apply plugin: 'com.android.application'
 apply from: '../codequality/quality.gradle'
 
+/*
+ * Read API key from CI server or from keys.properties file
+ */
+def readApiKey = {
+    String apiKey = ""
+    if (System.getenv("CI")) {
+        apiKey = System.getenv("API_KEY")
+    } else {
+        Properties props = new Properties()
+        try {
+            props.load(new FileInputStream(new File(getRootDir().getAbsolutePath() + "/keys.properties")))
+            apiKey = props.getProperty("api_key")
+        } catch (FileNotFoundException fnfe) {
+            println("Please create a keys.properties file in the root directory of the project")
+        }
+    }
+    return "$apiKey";
+}
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
@@ -16,6 +35,8 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "API_KEY", readApiKey())
     }
     buildTypes {
         release {
