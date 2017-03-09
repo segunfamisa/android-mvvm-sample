@@ -68,4 +68,5 @@ dependencies {
     androidTestCompile("com.android.support.test.espresso:espresso-core:$espressoCoreVersion", {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    testCompile "org.mockito:mockito-core:$mockitoVersion"
 }
