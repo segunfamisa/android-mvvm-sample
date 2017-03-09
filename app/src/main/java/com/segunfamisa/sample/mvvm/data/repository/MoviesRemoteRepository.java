@@ -21,7 +21,9 @@ public class MoviesRemoteRepository implements MoviesRepository {
 
     @Override
     public Observable<List<Movie>> getPopularMovies(int page) {
-        return apiService.discover("popularity.desc", page, ApiUtils.getApiKey())
+        Observable<DiscoverMoviesResponse> discoverMoviesResponseObservable =
+                apiService.discover("popularity.desc", page, ApiUtils.getApiKey());
+        return discoverMoviesResponseObservable
                 .flatMap(new Function<DiscoverMoviesResponse, ObservableSource<? extends List<Movie>>>() {
                     @Override
                     public ObservableSource<? extends List<Movie>> apply(DiscoverMoviesResponse discoverMoviesResponse)
