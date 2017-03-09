@@ -34,4 +34,8 @@ public class DiscoverMoviesResponse {
     public long getTotalResults() {
         return totalResults;
     }
+
+    public void setResults(List<Movie> results) {
+        this.results = results;
+    }
 }
