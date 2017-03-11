@@ -1,15 +1,14 @@
 package com.segunfamisa.sample.mvvm.ui.movies;
 
-import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import com.segunfamisa.sample.mvvm.R;
 import com.segunfamisa.sample.mvvm.data.model.Movie;
+import com.segunfamisa.sample.mvvm.data.repository.MoviesRepository;
 import com.segunfamisa.sample.mvvm.databinding.MovieItem;
 
 import java.util.ArrayList;
@@ -17,16 +16,13 @@ import java.util.List;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder> {
 
-    private Context context;
     private List<Movie> movies;
-    private ItemClickListener itemClickListener;
+    private Interactor interactor;
+    private MoviesRepository moviesRepository;
 
-    public interface ItemClickListener {
-        void onMovieClicked(Movie movie, int position);
-    }
-
-    public MovieAdapter(ItemClickListener itemClickListener) {
-        this.itemClickListener = itemClickListener;
+    public MovieAdapter(MoviesRepository moviesRepository, Interactor interactor) {
+        this.interactor = interactor;
+        this.moviesRepository = moviesRepository;
         movies = new ArrayList<>();
     }
 
@@ -45,17 +41,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder> {
     @Override
     public void onBindViewHolder(final MovieViewHolder holder, int position) {
         final Movie movie = movies.get(position);
-        holder.setMovie(movie);
 
-        holder.itemView.setClickable(true);
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (itemClickListener != null) {
-                    itemClickListener.onMovieClicked(movie, holder.getAdapterPosition());
-                }
-            }
-        });
+        final MovieItemViewModel movieItemViewModel = new MovieItemViewModel(moviesRepository,
+                interactor);
+        movieItemViewModel.setMovie(movie);
+        holder.setMovieItemViewModel(movieItemViewModel);
     }
 
     @Override

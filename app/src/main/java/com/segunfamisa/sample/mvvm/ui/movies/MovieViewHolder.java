@@ -15,8 +15,8 @@ public class MovieViewHolder extends RecyclerView.ViewHolder {
         this.movieItem = movieItem;
     }
 
-    public void setMovie(@NonNull Movie movie) {
-        movieItem.setMovie(movie);
+    public void setMovieItemViewModel(@NonNull MovieItemViewModel movieItemViewModel) {
+        movieItem.setMovieItemViewModel(movieItemViewModel);
         movieItem.executePendingBindings();
     }
 }

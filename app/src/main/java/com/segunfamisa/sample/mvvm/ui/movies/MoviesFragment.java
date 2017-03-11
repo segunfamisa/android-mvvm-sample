@@ -21,7 +21,7 @@ import com.segunfamisa.sample.mvvm.ui.base.BaseFragment;
 /**
  * A fragment to list the movies
  */
-public class MoviesFragment extends BaseFragment implements MovieAdapter.ItemClickListener {
+public class MoviesFragment extends BaseFragment implements Interactor {
 
 
     private static final String TAG = MoviesFragment.class.getName();
@@ -29,6 +29,7 @@ public class MoviesFragment extends BaseFragment implements MovieAdapter.ItemCli
 
     private MovieAdapter mAdapter;
     private MoviesViewModel mMoviesViewModel;
+    private MoviesRemoteRepository mMoviesRepository;
 
     public static Fragment newInstance() {
         return new MoviesFragment();
@@ -45,7 +46,7 @@ public class MoviesFragment extends BaseFragment implements MovieAdapter.ItemCli
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        setupViewModel();
+        setupViewModels();
 
         setupRecyclerView();
     }
@@ -57,21 +58,24 @@ public class MoviesFragment extends BaseFragment implements MovieAdapter.ItemCli
         mMoviesViewModel.start();
     }
 
-    private void setupViewModel() {
-        mMoviesViewModel = new MoviesViewModel(getContext(), new
-                MoviesRemoteRepository(MovieApiService.Creator.create()));
+    private void setupViewModels() {
+        mMoviesRepository = new
+                MoviesRemoteRepository(MovieApiService.Creator.create());
+
+        mMoviesViewModel = new MoviesViewModel(getContext(), mMoviesRepository);
         binding.setMoviesViewModel(mMoviesViewModel);
+
     }
 
     private void setupRecyclerView() {
-        mAdapter = new MovieAdapter(this);
+        mAdapter = new MovieAdapter(mMoviesRepository, this);
 
         binding.movies.setLayoutManager(new GridLayoutManager(getContext(), 2));
         binding.movies.setAdapter(mAdapter);
     }
 
     @Override
-    public void onMovieClicked(Movie movie, int position) {
+    public void showMovieDetails(Movie movie) {
         Toast.makeText(getContext(), movie.toString(), Toast.LENGTH_SHORT).show();
     }
 }

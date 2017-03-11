@@ -4,8 +4,9 @@
     xmlns:bind="http://schemas.android.com/apk/res-auto">
 
     <data class="MovieItem" >
-        <variable name= "movie"
-            type="com.segunfamisa.sample.mvvm.data.model.Movie"/>
+        <variable
+            name="movieItemViewModel"
+            type="com.segunfamisa.sample.mvvm.ui.movies.MovieItemViewModel" />
     </data>
 
     <!-- poster -->
@@ -16,7 +17,8 @@
         android:scaleType="centerCrop"
         android:clickable="true"
         android:foreground="?attr/selectableItemBackground"
-        bind:imageUrl="@{ movie.getPosterPath() }"
+        bind:imageUrl="@{ movieItemViewModel.posterUrl }"
+        android:onClick="@{ () -> movieItemViewModel.clickMovieItem() }"
         tools:src="@drawable/movie_placeholder"/>
 
 </layout>

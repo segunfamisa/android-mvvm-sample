@@ -1,6 +1,7 @@
 package com.segunfamisa.sample.mvvm.ui.movies;
 
 import com.segunfamisa.sample.mvvm.data.model.Movie;
+import com.segunfamisa.sample.mvvm.data.repository.MoviesRepository;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -15,20 +16,23 @@ public class MovieItemViewModelTest {
     private Interactor interactor;
 
     @Mock
-    private Movie mMovie;
+    private MoviesRepository mMoviesRepository;
 
+    @Mock
+    private Movie mMovie;
     private MovieItemViewModel mMovieItemViewModel;
 
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
 
-        mMovieItemViewModel = new MovieItemViewModel(mMovie, interactor);
+        mMovieItemViewModel = new MovieItemViewModel(mMoviesRepository, interactor);
     }
 
     @Test
     public void clickOnItemShowsMovieDetails() {
-        // given the movie item view model
+        // given the movie item view model has the movie set
+        mMovieItemViewModel.setMovie(mMovie);
 
         // when the movie item is clicked
         mMovieItemViewModel.clickMovieItem();
