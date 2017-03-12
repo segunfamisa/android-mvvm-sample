@@ -137,7 +137,11 @@ public class Movie {
         return getTitle();
     }
 
-    private Movie(String posterPath, boolean adult, String overview, String releaseDate, long id, String title, String backdropPath, double popularity, long voteCount, boolean video, double voteAverage, String imdbId, String homepageUrl, long runtime, long budget, List<ProductionCompany> productionCompanies, String tagline, String status) {
+    private Movie(String posterPath, boolean adult, String overview, String releaseDate, long id,
+                  String title, String backdropPath, double popularity, long voteCount,
+                  boolean video, double voteAverage, String imdbId, String homepageUrl,
+                  long runtime, long budget, List<ProductionCompany> productionCompanies,
+                  String tagline, String status) {
         this.posterPath = posterPath;
         this.adult = adult;
         this.overview = overview;
@@ -269,7 +273,9 @@ public class Movie {
         }
 
         public Movie build() {
-            return new Movie(posterPath, adult, overview, releaseDate, id, title, backdropPath, popularity, voteCount, video, voteAverage, imdbId, homepageUrl, runtime, budget, productionCompanies, tagline, status);
+            return new Movie(posterPath, adult, overview, releaseDate, id, title, backdropPath,
+                    popularity, voteCount, video, voteAverage, imdbId, homepageUrl, runtime, budget,
+                    productionCompanies, tagline, status);
         }
     }
 }

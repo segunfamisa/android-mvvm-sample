@@ -14,10 +14,10 @@ public class MoviesListBinding {
         RecyclerView.Adapter adapter = recyclerView.getAdapter();
 
         if (adapter != null && adapter instanceof MovieAdapter) {
-            ((MovieAdapter)adapter).setMovies(movies);
+            ((MovieAdapter) adapter).setMovies(movies);
         } else {
-            throw new IllegalStateException("RecyclerView either has no adapter set or the " +
-                    "adapter isn't of type MovieAdapter");
+            throw new IllegalStateException("RecyclerView either has no adapter set or the "
+                    + "adapter isn't of type MovieAdapter");
         }
     }
 }

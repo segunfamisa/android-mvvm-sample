@@ -31,7 +31,7 @@ public class TestDataGenerator {
      */
     public static List<Movie> generateMovieList(int count) {
         List<Movie> movies = new ArrayList<>();
-        for (int i=0; i<count; i++) {
+        for (int i = 0; i < count; i++) {
             movies.add(generateMovie(i));
         }
         return movies;

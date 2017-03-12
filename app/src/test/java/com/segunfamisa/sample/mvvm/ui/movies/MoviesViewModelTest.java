@@ -66,7 +66,6 @@ public class MoviesViewModelTest {
 
         // setup context
         setupContext();
-        
         mMoviesViewModel = new MoviesViewModel(mContext, mMoviesRepository);
     }
 
