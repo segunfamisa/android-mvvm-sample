@@ -4,4 +4,7 @@
     <string name="error_msg_network">Hey, please check your connection or something</string>
     <string name="error_msg_network_generic">Well, we screwed up. We don\'t really know what went wrong :(</string>
     <string name="error_msg_empty_movies">Uh uh, too bad. No movies now</string>
+    <string name="content_desc_backdrop">Movie backdrop</string>
+
+
 </resources>

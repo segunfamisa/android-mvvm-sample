@@ -1,0 +1,50 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.segunfamisa.sample.mvvm.ui.moviedetails.MovieDetailsFragment">
+
+        <!-- appbar -->
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="180dp">
+
+            <!-- toolbar -->
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="?attr/actionBarSize" />
+
+            <!-- collapsing toolbar -->
+            <android.support.design.widget.CollapsingToolbarLayout
+                android:id="@+id/collapsingToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!-- movie backdrop -->
+                <ImageView
+                    android:id="@+id/movieBackdrop"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="@string/content_desc_backdrop"/>
+
+            </android.support.design.widget.CollapsingToolbarLayout>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        </android.support.v4.widget.NestedScrollView>
+    </android.support.design.widget.CoordinatorLayout>
+
+</layout>
