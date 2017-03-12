@@ -5,6 +5,8 @@
     <string name="error_msg_network_generic">Well, we screwed up. We don\'t really know what went wrong :(</string>
     <string name="error_msg_empty_movies">Uh uh, too bad. No movies now</string>
     <string name="content_desc_backdrop">Movie backdrop</string>
+    <string name="prompt_overview">Overview</string>
 
-
+    <string name="vote_count">%1$d votes</string>
+    <string name="release_date">Release date: %1$s</string>
 </resources>

@@ -1,6 +1,7 @@
 package com.segunfamisa.sample.mvvm.ui.moviedetails;
 
 import android.databinding.ObservableBoolean;
+import android.databinding.ObservableField;
 
 import com.segunfamisa.sample.mvvm.data.model.Movie;
 import com.segunfamisa.sample.mvvm.data.repository.MoviesRepository;
@@ -14,6 +15,7 @@ public class MovieDetailsViewModel extends MovieViewModel {
 
     public final ObservableBoolean isMovieLoading = new ObservableBoolean();
     public final ObservableBoolean errorViewShowing = new ObservableBoolean();
+    public final ObservableField<String> errorString = new ObservableField<>();
 
     private final MoviesRepository mMoviesRepository;
 

@@ -106,7 +106,7 @@ public class MovieDetailsViewModelTest {
         assertEquals(detailsViewModel.movieTitle.get(), movie.getTitle());
         assertTrue(detailsViewModel.posterUrl.get().contains(movie.getPosterPath()));
         assertTrue(detailsViewModel.backdropUrl.get().contains(movie.getBackdropPath()));
-        assertEquals(detailsViewModel.voteAverage.get(), movie.getVoteAverage());
+        assertEquals(detailsViewModel.voteAverage.get(), (float) movie.getVoteAverage());
         assertEquals(detailsViewModel.voteCount.get(), movie.getVoteCount());
         assertEquals(detailsViewModel.movieOverview.get(), movie.getOverview());
         assertEquals(detailsViewModel.movieTagline.get(), movie.getTagline());

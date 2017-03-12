@@ -51,11 +51,6 @@ public class MoviesFragment extends BaseFragment implements Interactor {
         setupViewModels();
         setupToolbar();
         setupRecyclerView();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
 
         mMoviesViewModel.start();
     }
