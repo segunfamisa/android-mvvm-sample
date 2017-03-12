@@ -17,11 +17,16 @@ public class TestDataGenerator {
         return new Movie.Builder()
                 .setAdult(false)
                 .setBackdropPath("backdroppath")
+                .setPosterPath("posterpath")
                 .setBudget(10000)
                 .setHomepageUrl("https://google.com")
                 .setId(id)
                 .setImdbId("imdbId01")
                 .setTitle("Title " + id)
+                .setVoteAverage(4.5)
+                .setVoteCount(1000)
+                .setReleaseDate("2017-02-28")
+                .setOverview("This is some awesome overview")
                 .build();
     }
 

@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 
 import com.segunfamisa.sample.mvvm.R;
 import com.segunfamisa.sample.mvvm.ui.base.BaseFragment;
-import com.segunfamisa.sample.mvvm.ui.movies.MoviesFragment;
 
 /**
  * Fragment to show movie details
@@ -26,7 +25,7 @@ public class MovieDetailsFragment extends BaseFragment {
      * @return the instance of the fragment
      */
     public static Fragment newInstance(long movieId) {
-        Fragment frag = new MoviesFragment();
+        Fragment frag = new MovieDetailsFragment();
         Bundle args = new Bundle();
         args.putLong(ARG_MOVIE_ID, movieId);
         frag.setArguments(args);
