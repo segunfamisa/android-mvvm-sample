@@ -1,5 +1,6 @@
 package com.segunfamisa.sample.mvvm.data.model;
 
+import com.google.common.base.Objects;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -277,5 +278,37 @@ public class Movie {
                     popularity, voteCount, video, voteAverage, imdbId, homepageUrl, runtime, budget,
                     productionCompanies, tagline, status);
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Movie movie = (Movie) o;
+        return adult == movie.adult &&
+                id == movie.id &&
+                Double.compare(movie.popularity, popularity) == 0 &&
+                voteCount == movie.voteCount &&
+                video == movie.video &&
+                Double.compare(movie.voteAverage, voteAverage) == 0 &&
+                runtime == movie.runtime &&
+                budget == movie.budget &&
+                Objects.equal(posterPath, movie.posterPath) &&
+                Objects.equal(overview, movie.overview) &&
+                Objects.equal(releaseDate, movie.releaseDate) &&
+                Objects.equal(title, movie.title) &&
+                Objects.equal(backdropPath, movie.backdropPath) &&
+                Objects.equal(imdbId, movie.imdbId) &&
+                Objects.equal(homepageUrl, movie.homepageUrl) &&
+                Objects.equal(productionCompanies, movie.productionCompanies) &&
+                Objects.equal(tagline, movie.tagline) &&
+                Objects.equal(status, movie.status);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(posterPath, adult, overview, releaseDate, id, title, backdropPath,
+                popularity, voteCount, video, voteAverage, imdbId, homepageUrl, runtime, budget,
+                productionCompanies, tagline, status);
     }
 }
