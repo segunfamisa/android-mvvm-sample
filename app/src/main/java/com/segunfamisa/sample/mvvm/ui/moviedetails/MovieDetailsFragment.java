@@ -81,8 +81,8 @@ public class MovieDetailsFragment extends BaseFragment {
             mMovieId = savedInstanceState.getLong(ARG_MOVIE_ID, -1);
         }
         if (mMovieId == -1) {
-            throw new IllegalArgumentException("You either passed a wrong value of movie id," +
-                    " or you did not use the newInstance convenience method");
+            throw new IllegalArgumentException("You either passed a wrong value of movie id,"
+                    + " or you did not use the newInstance convenience method");
         }
     }
 

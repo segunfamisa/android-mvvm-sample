@@ -73,8 +73,8 @@ public class MovieViewModel extends BaseObservable {
     }
 
     private String getBackdropUrl(@NonNull Movie movie) {
-        return isEmpty(movie.getBackdropPath()) ? "" :
-                "https://image.tmdb.org/t/p/w780" + movie.getBackdropPath();
+        return isEmpty(movie.getBackdropPath()) ? ""
+                : "https://image.tmdb.org/t/p/w780" + movie.getBackdropPath();
     }
 
     private String getReleaseDate(Movie movie) {

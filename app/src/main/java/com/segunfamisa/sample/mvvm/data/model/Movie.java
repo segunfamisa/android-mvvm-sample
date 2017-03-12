@@ -285,24 +285,24 @@ public class Movie {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Movie movie = (Movie) o;
-        return adult == movie.adult &&
-                id == movie.id &&
-                Double.compare(movie.popularity, popularity) == 0 &&
-                voteCount == movie.voteCount &&
-                video == movie.video &&
-                Double.compare(movie.voteAverage, voteAverage) == 0 &&
-                runtime == movie.runtime &&
-                budget == movie.budget &&
-                Objects.equal(posterPath, movie.posterPath) &&
-                Objects.equal(overview, movie.overview) &&
-                Objects.equal(releaseDate, movie.releaseDate) &&
-                Objects.equal(title, movie.title) &&
-                Objects.equal(backdropPath, movie.backdropPath) &&
-                Objects.equal(imdbId, movie.imdbId) &&
-                Objects.equal(homepageUrl, movie.homepageUrl) &&
-                Objects.equal(productionCompanies, movie.productionCompanies) &&
-                Objects.equal(tagline, movie.tagline) &&
-                Objects.equal(status, movie.status);
+        return adult == movie.adult
+                && id == movie.id
+                && Double.compare(movie.popularity, popularity) == 0
+                && voteCount == movie.voteCount
+                && video == movie.video
+                && Double.compare(movie.voteAverage, voteAverage) == 0
+                && runtime == movie.runtime
+                && budget == movie.budget
+                && Objects.equal(posterPath, movie.posterPath)
+                && Objects.equal(overview, movie.overview)
+                && Objects.equal(releaseDate, movie.releaseDate)
+                && Objects.equal(title, movie.title)
+                && Objects.equal(backdropPath, movie.backdropPath)
+                && Objects.equal(imdbId, movie.imdbId)
+                && Objects.equal(homepageUrl, movie.homepageUrl)
+                && Objects.equal(productionCompanies, movie.productionCompanies)
+                && Objects.equal(tagline, movie.tagline)
+                && Objects.equal(status, movie.status);
     }
 
     @Override
