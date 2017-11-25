@@ -66,10 +66,18 @@ dependencies {
 
     compile "com.google.code.gson:gson:$gsonVersion"
 
+    // guava
+    compile('com.google.guava:guava:23.5-android', {
+        exclude group: 'com.google.code.findbugs', module: 'jsr305'
+    })
+
     // test dependencies
     testCompile "junit:junit:$jUnitVersion"
     androidTestCompile("com.android.support.test.espresso:espresso-core:$espressoCoreVersion", {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testCompile "org.mockito:mockito-core:$mockitoVersion"
+    testCompile("android.arch.core:core-testing:$archComponentsVersion", {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
 }
