@@ -1,11 +1,14 @@
 ext {
-    compileSdkVersion = 25
+    compileSdkVersion = 27
     minSdkVersion = 15
-    targetSdkVersion = 25
-    buildToolsVersion = "25.0.2"
+    targetSdkVersion = 27
+    buildToolsVersion = "27.0.1"
 
     // support library versions
-    supportLibraryVersion = "25.1.1"
+    supportLibraryVersion = "27.0.1"
+
+    // arch components version
+    archComponentsVersion = "1.0.0"
 
     retrofitVersion = "2.2.0"
     gsonVersion = "2.4"
