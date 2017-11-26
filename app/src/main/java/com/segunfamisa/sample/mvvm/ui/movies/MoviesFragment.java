@@ -1,8 +1,11 @@
 package com.segunfamisa.sample.mvvm.ui.movies;
 
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -19,6 +22,12 @@ import com.segunfamisa.sample.mvvm.data.repository.MoviesRemoteRepository;
 import com.segunfamisa.sample.mvvm.databinding.MovieListBinding;
 import com.segunfamisa.sample.mvvm.ui.base.BaseFragment;
 import com.segunfamisa.sample.mvvm.ui.moviedetails.MovieDetailsFragment;
+import com.segunfamisa.sample.mvvm.utils.DefaultSchedulerProvider;
+import com.segunfamisa.sample.mvvm.utils.ErrorResolver;
+import com.segunfamisa.sample.mvvm.utils.SchedulerProvider;
+import com.segunfamisa.sample.mvvm.utils.ViewModelFactory;
+
+import java.util.List;
 
 /**
  * A fragment to list the movies
@@ -30,29 +39,34 @@ public class MoviesFragment extends BaseFragment implements Interactor {
     private MovieListBinding binding;
 
     private MovieAdapter mAdapter;
-    private MoviesViewModel mMoviesViewModel;
     private MoviesRemoteRepository mMoviesRepository;
+
+    private MoviesListViewModel mViewModel;
+    private ErrorResolver mErrorResolver;
+    private final SchedulerProvider mSchedulerProvider = new DefaultSchedulerProvider();
 
     public static Fragment newInstance() {
         return new MoviesFragment();
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_movies, container, false);
         return binding.getRoot();
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         setupViewModels();
         setupToolbar();
         setupRecyclerView();
 
-        mMoviesViewModel.start();
+        mViewModel.fetchMovies(1);
+
+        bindViewModel();
     }
 
     private void setupToolbar() {
@@ -63,9 +77,49 @@ public class MoviesFragment extends BaseFragment implements Interactor {
         mMoviesRepository = new
                 MoviesRemoteRepository(MovieApiService.Creator.create());
 
-        mMoviesViewModel = new MoviesViewModel(getContext(), mMoviesRepository);
-        binding.setMoviesViewModel(mMoviesViewModel);
+        mErrorResolver = new MoviesErrorResolver(getContext());
 
+        ViewModelFactory viewModelFactory = new ViewModelFactory(mMoviesRepository,
+                mSchedulerProvider, mErrorResolver);
+        mViewModel = ViewModelProviders.of(this, viewModelFactory)
+                .get(MoviesListViewModel.class);
+    }
+
+    private void bindViewModel() {
+        mViewModel.movies().observe(this, new Observer<List<Movie>>() {
+            @Override
+            public void onChanged(@Nullable List<Movie> movies) {
+                if (movies == null) return;
+                mAdapter.setMovies(movies);
+            }
+        });
+
+        mViewModel.error().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String error) {
+                boolean hasError = error != null;
+                binding.layoutError.setVisibility(hasError ? View.VISIBLE : View.GONE);
+                if (hasError) {
+                    binding.textError.setText(error);
+                }
+            }
+        });
+
+        mViewModel.empty().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(@Nullable Boolean empty) {
+                boolean isEmpty = empty == null ? false : empty;
+                binding.layoutEmpty.setVisibility(isEmpty ? View.VISIBLE : View.GONE);
+            }
+        });
+
+        mViewModel.loading().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(@Nullable Boolean loading) {
+                boolean isLoading = loading == null ? false : loading;
+                binding.progressLoading.setVisibility(isLoading ? View.VISIBLE : View.GONE);
+            }
+        });
     }
 
     private void setupRecyclerView() {
