@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:bind="http://schemas.android.com/apk/res-auto">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <data class="MovieItem" >
+    <data class="MovieItem">
+
         <variable
-            name="movieItemViewModel"
-            type="com.segunfamisa.sample.mvvm.ui.movies.MovieItemViewModel" />
+            name="movieItem"
+            type="com.segunfamisa.sample.mvvm.data.model.Movie" />
     </data>
 
     <!-- poster -->
@@ -14,11 +14,9 @@
         android:id="@+id/poster"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
         android:clickable="true"
         android:foreground="?attr/selectableItemBackground"
-        bind:imageUrl="@{ movieItemViewModel.posterUrl }"
-        android:onClick="@{ () -> movieItemViewModel.clickMovieItem() }"
-        tools:src="@drawable/movie_placeholder"/>
+        android:scaleType="centerCrop"
+        tools:src="@drawable/movie_placeholder" />
 
 </layout>

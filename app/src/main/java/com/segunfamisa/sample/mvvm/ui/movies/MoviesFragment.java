@@ -32,7 +32,7 @@ import java.util.List;
 /**
  * A fragment to list the movies
  */
-public class MoviesFragment extends BaseFragment implements Interactor {
+public class MoviesFragment extends BaseFragment implements MovieItemClickListener {
 
 
     private static final String TAG = MoviesFragment.class.getName();
@@ -123,7 +123,7 @@ public class MoviesFragment extends BaseFragment implements Interactor {
     }
 
     private void setupRecyclerView() {
-        mAdapter = new MovieAdapter(mMoviesRepository, this);
+        mAdapter = new MovieAdapter(this);
 
         binding.movies.setLayoutManager(new GridLayoutManager(getContext(), 2));
         binding.movies.setAdapter(mAdapter);
